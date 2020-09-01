@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-First install [dev server]https://github.com/jveselkov/test-json-server/
+First install [dev server](https://github.com/jveselkov/test-json-server/)
 
 ## Available Scripts
 

@@ -1,0 +1,19 @@
+form.user-form {
+  width: 50%;
+  margin: 12px auto;
+  .input-field {
+    margin: 12px 0;
+    label {
+      margin-right: 10px;
+    }
+    input,
+    select {
+      padding: 2px;
+      float: right;
+      width: 50%;
+    }
+    select {
+      width: calc(50% + 8px);
+    }
+  }
+}

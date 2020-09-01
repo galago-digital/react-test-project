@@ -1,17 +1,14 @@
 export type UserType = {
-  id: number
+  id?: number | undefined
   name: string
-  distance?: number
-  email?: string
-  payment?: number
-  phone?: string
-  date?: Date
+  distance: number | undefined
+  email: string
+  payment: number | undefined
+  phone: string
+  date: string
 }
 
-export type HeaderType = {
-  key: string
-  title: string
-}
+export type HeaderType = { key: string; title: string }
 
 export type ActionMap<M extends { [index: string]: any }> = {
   [Key in keyof M]: M[Key] extends undefined

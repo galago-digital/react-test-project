@@ -12,8 +12,8 @@ const TableRow: React.FC<Props> = ({ user }: Props) => {
       <td>{user.name} </td>
       <td>{user.phone}</td>
       <td>{user.email}</td>
-      <td>{user.distance}</td>
-      <td>{user.payment}</td>
+      <td>{user.distance} км</td>
+      <td>{user.payment} р</td>
       <td>{user.date}</td>
     </tr>
   )

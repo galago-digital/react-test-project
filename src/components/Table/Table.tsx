@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react'
 import { UserType, HeaderType } from './../../types'
 import TableHeader, { ActiveTabType } from './TableHeader'
 import TableRow from './TableRow'
+import Pagination from './Pagination'
 import './Table.scss'
 import { sortByKey } from './helpers.js'
 
@@ -37,8 +38,10 @@ const Table: React.FC<Props> = ({ users, rowsCount = 5 }: Props) => {
       title: 'дата рождения',
     },
   ]
+
   const [sortBy, setSortBy] = useState<string>('')
   const [sortDirection, setSortDirection] = useState<boolean>(false)
+  const [currentPage, setCurrentPage] = useState<number>(1)
 
   function headerClick(activeTab: ActiveTabType): void {
     setSortBy(
@@ -61,6 +64,24 @@ const Table: React.FC<Props> = ({ users, rowsCount = 5 }: Props) => {
     return sorted
   }, [sortBy, sortDirection, users])
 
+  const maxPages = useMemo(
+    () => Math.ceil(users.length / rowsCount),
+    [users, rowsCount],
+  )
+
+  const selectedUsers = useMemo(
+    () =>
+      sortedUsers.slice(
+        (currentPage - 1) * rowsCount,
+        currentPage * rowsCount,
+      ),
+    [sortedUsers, currentPage, rowsCount],
+  )
+
+  function paginationHandler(index: number) {
+    setCurrentPage(index)
+  }
+
   return (
     <>
       <table className="users-table">
@@ -69,11 +90,18 @@ const Table: React.FC<Props> = ({ users, rowsCount = 5 }: Props) => {
           onClick={headerClick}
         />
         <tbody>
-          {sortedUsers.map((user) => {
+          {selectedUsers.map((user) => {
             return <TableRow user={user} key={user.id} />
           })}
         </tbody>
       </table>
+      {sortedUsers.length >= rowsCount && (
+        <Pagination
+          current={currentPage}
+          max={maxPages}
+          onChange={paginationHandler}
+        />
+      )}
     </>
   )
 }

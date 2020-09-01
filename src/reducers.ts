@@ -20,13 +20,7 @@ export const userReducer = (
 ): UserType[] => {
   switch (action.type) {
     case Types.Add:
-      return [
-        ...state,
-        {
-          id: action.payload.id,
-          name: action.payload.name,
-        },
-      ]
+      return [...state, action.payload]
     case Types.Set:
       return action.payload
     default:

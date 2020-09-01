@@ -10,7 +10,7 @@ type Props = {
 const Pagination: React.FC<Props> = ({
   current,
   max,
-  onChange,
+  onChange = () => {},
 }: Props) => {
   const disableFirst: boolean = useMemo(() => current === 1, [
     current,

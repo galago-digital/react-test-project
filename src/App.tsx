@@ -1,11 +1,13 @@
 import React from 'react'
-import './App.css'
+import './App.scss'
+import { AppProvider } from './context'
+import Users from './components/Users'
 
-export const App: React.FC<{}> = () => {
+const App: React.FC = () => {
   return (
-    <>
-      <h1>Hello</h1>
-    </>
+    <AppProvider>
+      <Users />
+    </AppProvider>
   )
 }
 
